@@ -1,0 +1,78 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: mongo:5.0.13
+    container_name: mongo
+    volumes:
+      - /mnt/nas/Config/mongo:/data/db
+    networks:
+      - graylog
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
+    container_name: elasticsearch
+    environment:
+      - http.host=0.0.0.0
+      - transport.host=localhost
+      - network.host=0.0.0.0
+      - "ES_JAVA_OPTS=-Dlog4j2.formatMsgNoLookups=true -Xms512m -Xmx512m"
+    volumes:
+      - /mnt/nas/Config/elasticsearch:/usr/share/elasticsearch/data
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    deploy:
+      resources:
+        limits:
+          memory: 1g
+    networks:
+      - graylog
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+
+  graylog:
+    image: graylog/graylog:5.1
+    container_name: graylog
+    entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
+    environment:
+      - GRAYLOG_ROOT_TIMEZONE=Asia/Shanghai
+      - GRAYLOG_PASSWORD_SECRET=Luminghao@19940208
+      - GRAYLOG_ROOT_USERNAME=luminghao
+      - GRAYLOG_ROOT_PASSWORD_SHA2=1207f8a77ab083187e60a87f7861a89c1d3475a4397276cc3d473967737a24d4
+      - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+    ports:
+      - 9000:9000
+      - 1514:1514
+      - 1514:1514/udp
+      - 12201:12201
+      - 12201:12201/udp
+    volumes:
+      - /mnt/nas/Config/graylog:/usr/share/graylog/data
+    networks:
+      - graylog
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+    depends_on:
+      - mongo
+      - elasticsearch
+
+networks:
+  graylog:
+    name: graylog
+    driver: bridge
