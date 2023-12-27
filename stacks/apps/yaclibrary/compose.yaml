@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  yaclibrary:
+    image: xthursdayx/yacreaderlibrary-server-docker
+    container_name: yaclibrary
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Asia/Shanghai
+    volumes:
+      - /mnt/nas/Config/yaclibrary:/config
+      - /mnt/nas/Comic:/comics
+    ports:
+      - 8080:8080
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true

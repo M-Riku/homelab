@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  alist:
+    image: xhofe/alist
+    container_name: alist
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TZ=Asia/Shanghai
+    volumes:
+      - /mnt/nas/Config/alist:/opt/alist/data
+    ports:
+      - 5244:5244
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true

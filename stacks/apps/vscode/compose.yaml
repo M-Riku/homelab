@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  vscode:
+    image: linuxserver/code-server
+    container_name: vscode
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TZ=Asia/Shanghai
+      - PASSWORD=Mrlu19940208@@
+      - DEFAULT_WORKSPACE=/Code
+    volumes:
+      - /mnt/nas/Config/vscode:/config
+      - /mnt/nas/Code:/Code
+    ports:
+      - 8443:8443
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true

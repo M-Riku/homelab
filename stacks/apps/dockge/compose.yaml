@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  dockge:
+    image: louislam/dockge
+    container_name: dockge
+    environment:
+      - DOCKGE_STACKS_DIR=/opt/stacks
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/nas/Config/dockge/data:/app/data
+      - /mnt/nas/Config/dockge/stacks:/opt/stacks
+    ports:
+      - 5001:5001
+    networks:
+      - apps 
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+         max-size: 10m
+         max-file: 3
+networks:
+  apps:
+    external: true

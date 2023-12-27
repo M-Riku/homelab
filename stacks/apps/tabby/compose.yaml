@@ -1,0 +1,64 @@
+version: "3.8"
+services:
+  tabby-web:
+    image: tabby-web
+    container_name: tabby-web
+    environment:
+      - TZ=Asia/Shanghai
+      - PORT=80
+      - DEBUG=False
+      - DATABASE_URL=mysql://root:19940208@tabby-db/tabby
+      - SOCIAL_AUTH_GITHUB_KEY=c88dc298f2dc55cd4957
+      - SOCIAL_AUTH_GITHUB_SECRET=7616f415edcc0e7a8862d5122ed8cb1a903a7d2f
+    ports:
+      - 9090:80
+    networks:
+      - apps
+    depends_on:
+      - tabby-db
+      - tabby-connection-gateway
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+  tabby-db:
+    image: mariadb:10.7.1
+    container_name: tabby-db
+    environment:
+      - TZ=Asia/Shanghai
+      - MARIADB_DATABASE=tabby
+      - MARIADB_USER=tabby
+      - MARIADB_PASSWORD=19940208
+      - MYSQL_ROOT_PASSWORD=19940208
+    volumes:
+      - /mnt/nas/Config/tabby:/var/lib/mysql
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+  tabby-connection-gateway:
+    image: ghcr.io/eugeny/tabby-connection-gateway
+    container_name: tabby-connection-gateway
+    command: --token-auth --host 0.0.0.0
+    environment:
+      - TZ=Asia/Shanghai
+      - TABBY_AUTH_TOKEN=19940208
+    ports:
+      - 9001:9000
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true

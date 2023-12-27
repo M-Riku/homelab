@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  qbittorrent:
+    image: linuxserver/qbittorrent
+    container_name: qbittorrent
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TZ=Asia/Shanghai
+      - WEBUI_PORT=6363
+    volumes:
+      - /mnt/nas/Config/qbittorrent:/config
+      - /mnt/nas/Downloads:/downloads
+    ports:
+      - 6881:6881
+      - 6881:6881/udp
+      - 6363:6363
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true

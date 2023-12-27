@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/nas/Config/portainer:/data
+    ports:
+      - 8000:8000
+      - 9000:9000
+      - 9443:9443
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true
