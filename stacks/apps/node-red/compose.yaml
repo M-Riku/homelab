@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  node-red:
+    image: nodered/node-red
+    container_name: node-red
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /mnt/nas/Config/node-red:/data
+    ports:
+      - 1880:1880
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true

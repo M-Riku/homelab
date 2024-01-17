@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /mnt/nas/Config/mosquitto:/mosquitto
+    ports:
+      - 1883:1883
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+networks:
+  apps:
+    external: true
