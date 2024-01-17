@@ -4,6 +4,9 @@ services:
     image: eclipse-mosquitto
     container_name: mqtt
     environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=022
       - TZ=Asia/Shanghai
     volumes:
       - /mnt/nas/Config/mqtt:/mosquitto
