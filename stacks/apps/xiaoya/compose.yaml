@@ -1,8 +1,8 @@
 version: "3.8"
 services:
   xiaoya:
-    image: xiaoyaliu/alist 
-    container_name: xiaoya 
+    image: xiaoyaliu/alist
+    container_name: xiaoya
     environment:
       - PUID=1000
       - PGID=1000
@@ -12,6 +12,25 @@ services:
       - /mnt/nas/Config/xiaoya:/data
     ports:
       - 5678:80
+    networks:
+      - apps
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+  xiaoyakeeper:
+    image: dockerproxy.com/library/alpine:3.18.2
+    container_name: xiaoyakeeper
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/nas/Config/xiaoya/aliyun_clear.sh:/etc/xiaoya/aliyun_clear.sh
+      - /mnt/nas/Config/xiaoya/docker-entrypoint.sh:/docker-entrypoint.sh
+    command: sh -c "if [ -f /etc/xiaoya/aliyun_clear.sh ];then sh /etc/xiaoya/aliyun_clear.sh 0;else sleep 60;fi"
+    privileged: true
     networks:
       - apps
     restart: unless-stopped
