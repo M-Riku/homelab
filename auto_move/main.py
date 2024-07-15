@@ -8,7 +8,7 @@ from time import sleep, strftime, localtime, time
 
 
 LOGS = []
-LOG_PATH = f"/{os.path.dirname(os.path.abspath(__file__))}/log/auto_anime_move.log"
+LOG_PATH = f"/{os.path.dirname(os.path.abspath(__file__))}/auto_anime_move.log"
 
 
 def logger(message):
