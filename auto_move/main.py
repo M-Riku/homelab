@@ -71,7 +71,7 @@ if __name__ == "__main__":
         save_path, file_name = sys.argv[1], sys.argv[2]
         LOGS.append(logger(f"INFO: 接受到{save_path=}"))
         LOGS.append(logger(f"INFO: 接受到{file_name=}"))
-        main(save_path, file_name, True)
+        main(save_path, file_name)
     except Exception as e:
         LOGS.append(logger(f"WARNING: {e}"))
     finally:
