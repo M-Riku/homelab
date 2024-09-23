@@ -34,8 +34,10 @@ proxies:
   # 虎云
   - { name: '🇯🇵 虎云-JP 01', type: trojan, server: huyun-cdn.jp1.huyun.icu, port: 26000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
   - { name: '🇯🇵 虎云-JP 02', type: trojan, server: huyun-cdn.jp2.huyun.icu, port: 10000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
-  - { name: '🇯🇵 虎云-JP 03', type: trojan, server: huyun-cdn.jp3.huyun.icu, port: 10003, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true  }
-  # - { name: '🇯🇵 虎云-JP ex', type: trojan, server: interance6.jp2.huyun.icu, port: 10000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
+  - { name: '🇯🇵 虎云-JP 03', type: trojan, server: huyun-cdn.jp3.huyun.icu, port: 10003, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
+  - { name: '🇯🇵 虎云-JP 01 ex', type: trojan, server: huyun-cdn6.jp1.huyun.icu, port: 26000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
+  - { name: '🇯🇵 虎云-JP 02 ex', type: trojan, server: huyun-cdn6.jp2.huyun.icu, port: 10000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
+  - { name: '🇯🇵 虎云-JP 03 ex', type: trojan, server: huyun-cdn6.jp3.huyun.icu, port: 10003, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -57,7 +59,9 @@ proxy-groups:
       - 🇯🇵 虎云-JP 01
       - 🇯🇵 虎云-JP 02
       - 🇯🇵 虎云-JP 03
-      # - 🇯🇵 虎云-JP ex
+      - 🇯🇵 虎云-JP 01 ex
+      - 🇯🇵 虎云-JP 02 ex
+      - 🇯🇵 虎云-JP 03 ex
       - DIRECT
   - name: ♻️ 自动选择
     type: select
@@ -183,7 +187,9 @@ proxy-groups:
       - 🇯🇵 虎云-JP 01
       - 🇯🇵 虎云-JP 02
       - 🇯🇵 虎云-JP 03
-      # - 🇯🇵 虎云-JP ex
+      - 🇯🇵 虎云-JP 01 ex
+      - 🇯🇵 虎云-JP 02 ex
+      - 🇯🇵 虎云-JP 03 ex
 rules:
  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
  - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
