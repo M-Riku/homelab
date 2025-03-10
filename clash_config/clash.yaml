@@ -5,32 +5,7 @@ mode: rule
 log-level: info
 external-controller: '127.0.0.1:9090'
 ipv6: true
-dns:
-    enable: true
-    ipv6: true
-    default-nameserver: [223.5.5.5, 119.29.29.29]
-    fake-ip-range: 198.18.0.1/16
-    use-hosts: true
-    nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
-    fallback: ['tls://1.0.0.1:853', 'https://cloudflare-dns.com/dns-query', 'https://dns.google/dns-query']
-    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
 proxies:
-  # - { name: '🇯🇵 冲浪云-JP 01', type: ss, server: camy3aydjwpettcn.psuddd789.com, port: 51121, cipher: chacha20-ietf-poly1305, password: ee58f54d-7cd2-47fd-b453-041fb2370264, udp: true }
-  # - { name: '🇯🇵 冲浪云-JP 02', type: ss, server: camy3aydjwpettcn.psuddd789.com, port: 51122, cipher: chacha20-ietf-poly1305, password: ee58f54d-7cd2-47fd-b453-041fb2370264, udp: true }
-  # - { name: '🇯🇵 冲浪云-JP 03', type: ss, server: camy3aydjwpettcn.psuddd789.com, port: 51123, cipher: chacha20-ietf-poly1305, password: ee58f54d-7cd2-47fd-b453-041fb2370264, udp: true }
-  # - { name: '🇯🇵 冲浪云-JP 04', type: ss, server: apnep2erpyyj4ef86.psuddd789.com, port: 51021, cipher: chacha20-ietf-poly1305, password: ee58f54d-7cd2-47fd-b453-041fb2370264, udp: true }
-  # - { name: '🇯🇵 冲浪云-JP 05', type: ss, server: apnep2erpyyj4ef86.psuddd789.com, port: 51022, cipher: chacha20-ietf-poly1305, password: ee58f54d-7cd2-47fd-b453-041fb2370264, udp: true }
-  # - { name: '🇯🇵 冲浪云-JP 06', type: ss, server: apnep2erpyyj4ef86.psuddd789.com, port: 51023, cipher: chacha20-ietf-poly1305, password: ee58f54d-7cd2-47fd-b453-041fb2370264, udp: true }
-  # - { name: '🇯🇵 冲浪云-JP 游戏', type: ss, server: huri.7766.org, port: 9005, cipher: chacha20-ietf-poly1305, password: ee58f54d-7cd2-47fd-b453-041fb2370264, udp: true }
-
-  # - { name: '🇯🇵 冲浪猫-JP 01', type: ss, server: jpa-zf.clm10086.xyz, port: 11702, cipher: chacha20-ietf-poly1305, password: bd126383-b0a2-461c-876d-808c3af0e5a1, udp: true }
-  # - { name: '🇯🇵 冲浪猫-JP 02', type: ss, server: jpb-zf.clm10086.xyz, port: 11882, cipher: chacha20-ietf-poly1305, password: bd126383-b0a2-461c-876d-808c3af0e5a1, udp: true }
-  # - { name: '🇯🇵 冲浪猫-JP 03', type: ss, server: jpc-zf.clm10086.xyz, port: 11883, cipher: chacha20-ietf-poly1305, password: bd126383-b0a2-461c-876d-808c3af0e5a1, udp: true }
-  # - { name: '🇯🇵 冲浪猫-JP 04', type: ss, server: jpd-zf.clm10086.xyz, port: 11884, cipher: chacha20-ietf-poly1305, password: bd126383-b0a2-461c-876d-808c3af0e5a1, udp: true }
-  # - { name: '🇯🇵 冲浪猫-JP 05', type: ss, server: jpe-zf.clm10086.xyz, port: 11885, cipher: chacha20-ietf-poly1305, password: bd126383-b0a2-461c-876d-808c3af0e5a1, udp: true }
-  # - { name: '🇯🇵 冲浪猫-JP 06', type: ss, server: jpf-zf.clm10086.xyz, port: 11886, cipher: chacha20-ietf-poly1305, password: bd126383-b0a2-461c-876d-808c3af0e5a1, udp: true }
-  # - { name: '🇯🇵 冲浪猫-JP 07', type: ss, server: jpg-zf.clm10086.xyz, port: 11887, cipher: chacha20-ietf-poly1305, password: bd126383-b0a2-461c-876d-808c3af0e5a1, udp: true }
-
   # 虎云
   - { name: '🇯🇵 虎云-JP 01', type: trojan, server: huyun-cdn.jp1.huyun.icu, port: 26000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
   - { name: '🇯🇵 虎云-JP 02', type: trojan, server: huyun-cdn.jp2.huyun.icu, port: 10000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
@@ -38,24 +13,15 @@ proxies:
   - { name: '🇯🇵 虎云-JP 01 ex', type: trojan, server: huyun-cdn6.jp1.huyun.icu, port: 26000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
   - { name: '🇯🇵 虎云-JP 02 ex', type: trojan, server: huyun-cdn6.jp2.huyun.icu, port: 10000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
   - { name: '🇯🇵 虎云-JP 03 ex', type: trojan, server: huyun-cdn6.jp3.huyun.icu, port: 10003, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
+
+  #cordcloud
+  - { name: '🇯🇵 上海移动转日本NTT', type: trojan, server: shcm.h4valm27.ccddn4.icu, port: 65205, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, udp: true, sni: dl.fscmjpntt.cc.tjcct.xyz, skip-cert-verify: true }
+
 proxy-groups:
   - name: 🚀 节点选择
     type: select
     proxies:
       - ♻️ 自动选择
-      # - 🇯🇵 冲浪云-JP 01
-      # - 🇯🇵 冲浪云-JP 02
-      # - 🇯🇵 冲浪云-JP 03
-      # - 🇯🇵 冲浪云-JP 04
-      # - 🇯🇵 冲浪云-JP 05
-      # - 🇯🇵 冲浪云-JP 06
-      # - 🇯🇵 冲浪猫-JP 01
-      # - 🇯🇵 冲浪猫-JP 02
-      # - 🇯🇵 冲浪猫-JP 03
-      # - 🇯🇵 冲浪猫-JP 04
-      # - 🇯🇵 冲浪猫-JP 05
-      # - 🇯🇵 冲浪猫-JP 06
-      # - 🇯🇵 冲浪猫-JP 07
       - 🇯🇵 虎云-JP 01
       - 🇯🇵 虎云-JP 02
       - 🇯🇵 虎云-JP 03
@@ -66,8 +32,6 @@ proxy-groups:
   - name: ♻️ 自动选择
     type: select
     proxies:
-      # - ♻️ 冲浪云
-      # - ♻️ 冲浪猫
       - ♻️ 虎云
   - name: 🎥 奈飞视频
     type: select
@@ -76,7 +40,6 @@ proxy-groups:
   - name: 🎮 游戏平台
     type: select
     proxies:
-      # - 🇯🇵 冲浪云-JP 游戏
       - 🚀 节点选择
       - DIRECT
   - name: 📲 电报消息
@@ -153,31 +116,6 @@ proxy-groups:
     proxies:
       - DIRECT
       - 🚀 节点选择
-  # - name: ♻️ 冲浪云
-  #   type: url-test
-  #   url: http://www.gstatic.com/generate_204
-  #   interval: 300
-  #   tolerance: 50
-  #   proxies:
-  #     - 🇯🇵 冲浪云-JP 01
-  #     - 🇯🇵 冲浪云-JP 02
-  #     - 🇯🇵 冲浪云-JP 03
-  #     - 🇯🇵 冲浪云-JP 04
-  #     - 🇯🇵 冲浪云-JP 05
-  #     - 🇯🇵 冲浪云-JP 06
-  # - name: ♻️ 冲浪猫
-  #   type: url-test
-  #   url: http://www.gstatic.com/generate_204
-  #   interval: 300
-  #   tolerance: 50
-  #   proxies:
-  #     - 🇯🇵 冲浪猫-JP 01
-  #     - 🇯🇵 冲浪猫-JP 02
-  #     - 🇯🇵 冲浪猫-JP 03
-  #     - 🇯🇵 冲浪猫-JP 04
-  #     - 🇯🇵 冲浪猫-JP 05
-  #     - 🇯🇵 冲浪猫-JP 06
-  #     - 🇯🇵 冲浪猫-JP 07
   - name: ♻️ 虎云
     type: url-test
     url: http://www.gstatic.com/generate_204
