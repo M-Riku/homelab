@@ -1,10 +1,12 @@
-mixed-port: 7890
-allow-lan: true
-bind-address: '*'
+port: 7890
+socks-port: 7891
+redir-port: 7892
+allow-lan: false
 mode: rule
 log-level: info
 external-controller: '127.0.0.1:9090'
 ipv6: true
+secret: ''
 proxies:
   # 虎云
   - { name: '🇯🇵 虎云-JP 01', type: trojan, server: huyun-cdn.jp1.huyun.icu, port: 26000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
@@ -14,9 +16,26 @@ proxies:
   - { name: '🇯🇵 虎云-JP 02 ex', type: trojan, server: huyun-cdn6.jp2.huyun.icu, port: 10000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
   - { name: '🇯🇵 虎云-JP 03 ex', type: trojan, server: huyun-cdn6.jp3.huyun.icu, port: 10003, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
 
-  #cordcloud
-  - { name: '🇯🇵 上海移动转日本NTT', type: trojan, server: shcm.h4valm27.ccddn4.icu, port: 65205, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, udp: true, sni: dl.fscmjpntt.cc.tjcct.xyz, skip-cert-verify: true }
-
+  #CordCloud
+  - { name: '🇯🇵 CordCloud-NTT1', type: trojan, server: shcuac.aag436.ccddn4.icu, port: 4988, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT2', type: trojan, server: shcuac.aag436.ccddn4.icu, port: 65521, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt2.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT3', type: trojan, server: shcuac.aag436.ccddn4.icu, port: 65524, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt3.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT4', type: trojan, server: cn-sh.sasg4e.ccddn4.icu, port: 65520, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt4.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT5', type: trojan, server: cn-sh.sasg4e.ccddn4.icu, port: 65523, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt5.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT6', type: trojan, server: cn-sh.sasg4e.ccddn4.icu, port: 4901, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt6.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT7', type: trojan, server: shcuac.aag438.ccddn4.icu, port: 61005, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt7.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT8', type: trojan, server: shcuac.aag438.ccddn4.icu, port: 61006, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt8.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT9', type: trojan, server: shcuac.aag438.ccddn4.icu, port: 61012, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt9.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT10', type: trojan, server: shcuac.aag438.ccddn4.icu, port: 61013, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt10.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT12', type: trojan, server: shcuac.aag437.ccddn4.icu, port: 65400, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt12.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT13', type: trojan, server: shcuac.aag437.ccddn4.icu, port: 65403, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpntt13.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT14', type: trojan, server: shcm.h4valm27.ccddn4.icu, port: 65205, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.fscmjpntt.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-NTT15', type: trojan, server: shcm.h4valm27.ccddn4.icu, port: 65206, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.fscmjpntt2.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-BGP1', type: trojan, server: shcuac.aag436.ccddn4.icu, port: 4989, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpbgp.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-BGP2', type: trojan, server: shcuac.aag436.ccddn4.icu, port: 65527, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpbgp2.cc.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-BGP4', type: trojan, server: shcuac.aag436.ccddn4.icu, port: 65529, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpbgp4.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-BGP6', type: trojan, server: shcuac.aag437.ccddn4.icu, port: 65200, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpbgp6.tjcct.xyz, udp: true }
+  - { name: '🇯🇵 CordCloud-TE', type: trojan, server: shcuac.aag436.ccddn4.icu, port: 4990, password: c82f5c7c-f65f-3d8c-88b1-65aa249b6a47, sni: dl.shcujpte.cc.tjcct.xyz, udp: true }
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -28,11 +47,31 @@ proxy-groups:
       - 🇯🇵 虎云-JP 01 ex
       - 🇯🇵 虎云-JP 02 ex
       - 🇯🇵 虎云-JP 03 ex
+      - 🇯🇵 CordCloud-NTT1
+      - 🇯🇵 CordCloud-NTT2
+      - 🇯🇵 CordCloud-NTT3
+      - 🇯🇵 CordCloud-NTT4
+      - 🇯🇵 CordCloud-NTT5
+      - 🇯🇵 CordCloud-NTT6
+      - 🇯🇵 CordCloud-NTT7
+      - 🇯🇵 CordCloud-NTT8
+      - 🇯🇵 CordCloud-NTT9
+      - 🇯🇵 CordCloud-NTT10
+      - 🇯🇵 CordCloud-NTT12
+      - 🇯🇵 CordCloud-NTT13
+      - 🇯🇵 CordCloud-NTT14
+      - 🇯🇵 CordCloud-NTT15
+      - 🇯🇵 CordCloud-BGP1
+      - 🇯🇵 CordCloud-BGP2
+      - 🇯🇵 CordCloud-BGP4
+      - 🇯🇵 CordCloud-BGP6
+      - 🇯🇵 CordCloud-TE
       - DIRECT
   - name: ♻️ 自动选择
     type: select
     proxies:
       - ♻️ 虎云
+      - ♻️ CordCloud
   - name: 🎥 奈飞视频
     type: select
     proxies:
@@ -118,7 +157,7 @@ proxy-groups:
       - 🚀 节点选择
   - name: ♻️ 虎云
     type: url-test
-    url: http://www.gstatic.com/generate_204
+    url: https://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
@@ -128,6 +167,31 @@ proxy-groups:
       - 🇯🇵 虎云-JP 01 ex
       - 🇯🇵 虎云-JP 02 ex
       - 🇯🇵 虎云-JP 03 ex
+  - name: ♻️ CordCloud
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - 🇯🇵 CordCloud-NTT1
+      - 🇯🇵 CordCloud-NTT2
+      - 🇯🇵 CordCloud-NTT3
+      - 🇯🇵 CordCloud-NTT4
+      - 🇯🇵 CordCloud-NTT5
+      - 🇯🇵 CordCloud-NTT6
+      - 🇯🇵 CordCloud-NTT7
+      - 🇯🇵 CordCloud-NTT8
+      - 🇯🇵 CordCloud-NTT9
+      - 🇯🇵 CordCloud-NTT10
+      - 🇯🇵 CordCloud-NTT12
+      - 🇯🇵 CordCloud-NTT13
+      - 🇯🇵 CordCloud-NTT14
+      - 🇯🇵 CordCloud-NTT15
+      - 🇯🇵 CordCloud-BGP1
+      - 🇯🇵 CordCloud-BGP2
+      - 🇯🇵 CordCloud-BGP4
+      - 🇯🇵 CordCloud-BGP6
+      - 🇯🇵 CordCloud-TE
 rules:
  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
  - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
