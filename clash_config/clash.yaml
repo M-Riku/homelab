@@ -24,6 +24,10 @@ proxies:
   - { name: '🇯🇵 虎云-JP 01 ex', type: trojan, server: huyun-cdn6.jp1.huyun.icu, port: 26000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
   - { name: '🇯🇵 虎云-JP 02 ex', type: trojan, server: huyun-cdn6.jp2.huyun.icu, port: 10000, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
   - { name: '🇯🇵 虎云-JP 03 ex', type: trojan, server: huyun-cdn6.jp3.huyun.icu, port: 10003, password: d49c613d-c3dc-4c6d-abb2-2b87ed886dba, udp: true, sni: dl.hu-yunpan.top, skip-cert-verify: true }
+
+  # xinxin
+  - {name: '🇯🇵 日本01-GPT', server: rb1.psmdb.top, port: 46387, type: ss, cipher: aes-128-gcm, password: 8809c16c-0013-4a84-8699-6da9efb9f6e2, udp: true}
+  - {name: '🇯🇵 日本02-GPT', server: rb2.psmdb.top, port: 47938, type: ss, cipher: aes-128-gcm, password: 8809c16c-0013-4a84-8699-6da9efb9f6e2, udp: true}
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -35,11 +39,14 @@ proxy-groups:
       - 🇯🇵 虎云-JP 01 ex
       - 🇯🇵 虎云-JP 02 ex
       - 🇯🇵 虎云-JP 03 ex
+      - 🇯🇵 日本01-GPT
+      - 🇯🇵 日本02-GPT
       - DIRECT
   - name: ♻️ 自动选择
     type: select
     proxies:
       - ♻️ 虎云
+      - ♻️ Xinxin
   - name: 🎥 奈飞视频
     type: select
     proxies:
@@ -135,6 +142,14 @@ proxy-groups:
       - 🇯🇵 虎云-JP 01 ex
       - 🇯🇵 虎云-JP 02 ex
       - 🇯🇵 虎云-JP 03 ex
+  - name: ♻️ Xinxin
+    type: url-test
+    url: https://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+      - 🇯🇵 日本01-GPT
+      - 🇯🇵 日本02-GPT
 rules:
  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
  - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
