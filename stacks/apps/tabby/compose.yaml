@@ -1,12 +1,13 @@
 version: "3.8"
 services:
   tabby-web:
-    image: tabby-web
+    image: ghcr.io/eugeny/tabby-web:latest
     container_name: tabby-web
     environment:
       - TZ=Asia/Shanghai
       - PORT=80
       - DEBUG=False
+      - APP_DIST_STORAGE=/app-dist
       - DATABASE_URL=mysql://root:19940208@tabby-db/tabby
       - SOCIAL_AUTH_GITHUB_KEY=c88dc298f2dc55cd4957
       - SOCIAL_AUTH_GITHUB_SECRET=7616f415edcc0e7a8862d5122ed8cb1a903a7d2f
@@ -43,7 +44,7 @@ services:
         max-size: 10m
         max-file: 3
   tabby-connection-gateway:
-    image: ghcr.io/eugeny/tabby-connection-gateway
+    image: ghcr.io/eugeny/tabby-connection-gateway:master
     container_name: tabby-connection-gateway
     command: --token-auth --host 0.0.0.0
     environment:
