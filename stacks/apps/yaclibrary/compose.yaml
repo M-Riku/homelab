@@ -4,8 +4,8 @@ services:
     image: xthursdayx/yacreaderlibrary-server-docker
     container_name: yaclibrary
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1026
+      - PGID=100
       - TZ=Asia/Shanghai
     volumes:
       - /mnt/nas/Config/yaclibrary:/config
