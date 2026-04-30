@@ -1,0 +1,15 @@
+# 自定义直连域名
+# 这些域名不在标准 ACL4SSR 规则中，或需要从代理列表中覆盖为直连
+
+# 硬件/IoT
+DOMAIN-SUFFIX,nvidia.com
+DOMAIN-SUFFIX,asuscomm.com
+DOMAIN-SUFFIX,home-assistant.io
+
+# 网络工具
+DOMAIN-SUFFIX,tailscale.io
+DOMAIN-SUFFIX,openclash.org
+
+# 生产力工具（覆盖 ProxyLite 中的代理规则，改为直连）
+DOMAIN-SUFFIX,notion.so
+DOMAIN-SUFFIX,1password.com
